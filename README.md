@@ -1,214 +1,179 @@
-# ExpiryGuard – Smart Expiry Date Reminder
+# 🛡️ ExpiryGuard - Gamified Expiry Tracking System
 
-![ExpiryGuard Logo](https://via.placeholder.com/800x200?text=ExpiryGuard+-+Never+Waste+Food+or+Medicine+Again)
+[![React](https://img.shields.io/badge/React-19.2.0-blue.svg)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-blue.svg)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-7.2.4-purple.svg)](https://vitejs.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.1.17-cyan.svg)](https://tailwindcss.com/)
 
-## 🎯 Overview
-
-ExpiryGuard is a single-purpose micro-tool website that helps people track product expiry dates and reminds them before products expire. Reduce waste, save money, and stay safe by never consuming expired products again!
+A modern, gamified web application for tracking product expiry dates with an engaging reward system. Never waste food, medicine, or household items again!
 
 ## ✨ Features
 
-### Core Features
-- **Add Products**: Track any product with an expiry date (food, medicine, cosmetics, etc.)
-- **Automatic Status Calculation**: Visual indicators for Safe (green), Expiring Soon (orange), and Expired (red)
-- **Smart Reminders**: Get notified 1, 3, 7 days before expiry or set custom reminder periods
-- **Product Dashboard**: View all products with filtering and search capabilities
-- **Quick Actions**: Mark as used, edit, or delete products with one click
+### 🎮 Gamification System
+- **Eco Points**: Earn points for every waste-reducing action
+- **5 Levels**: Progress from "Waste Rookie" to "Eco Legend"
+- **Achievements**: Unlock 5+ badges for milestones
+- **Streaks**: Maintain daily streaks for bonus points
+- **Statistics**: Track money saved, CO₂ reduced, and products saved
 
-### Additional Features
-- **Local Storage**: All data persists in your browser
-- **Responsive Design**: Works seamlessly on mobile, tablet, and desktop
-- **Clean UI**: Minimal, modern design that's easy to use
-- **Accessibility**: WCAG AA compliant with keyboard navigation support
+### 📦 Product Management
+- Add products with expiry dates, categories, and quantities
+- Smart filtering by status (Safe, Expiring Soon, Expired)
+- Search functionality
+- Edit and delete products
+- Mark products as used before expiry
 
-## 🚀 Getting Started
+### 🔔 Smart Reminders
+- Customizable reminder days (1, 3, 7 days or custom)
+- Voice reminders with text-to-speech
+- Smart suggestions for expiring products
+- Recipe ideas and storage tips
+
+### 👤 User Authentication
+- Secure login/signup system
+- User profiles with avatars
+- Session persistence
+- Multiple user support
+
+### 🎨 Modern UI/UX
+- Beautiful gradient designs
+- Responsive mobile-first layout
+- Smooth animations and transitions
+- Confetti celebrations for achievements
+- Dark mode ready
+
+### 🏪 Multiple Modes
+- **Home Mode**: For households
+- **Store Mode**: For grocery stores
+- **Restaurant Mode**: For kitchens
+- **Pharmacy Mode**: For medical shops
+
+## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js (v20.19+ or v22.12+)
-- npm (v11+)
+- Node.js 18+ 
+- npm or yarn
 
 ### Installation
 
-1. Clone the repository:
 ```bash
-git clone <repository-url>
-cd expiry-guard
-```
+# Clone the repository
+git clone https://github.com/vikassingh6264/ExpiryGuard_Web.git
 
-2. Install dependencies:
-```bash
+# Navigate to project directory
+cd ExpiryGuard_Web
+
+# Install dependencies
 npm install
-```
 
-3. Start the development server:
-```bash
+# Start development server
 npm run dev
 ```
 
-4. Open your browser and navigate to:
-```
-http://localhost:5174
-```
+The app will be available at `http://localhost:5173`
 
-## 📦 Available Scripts
+### Build for Production
 
-### Development
 ```bash
-npm run dev
-```
-Starts the development server with hot module replacement.
-
-### Build
-```bash
+# Build the project
 npm run build
-```
-Creates an optimized production build in the `dist` folder.
 
-### Preview
-```bash
+# Preview production build
 npm run preview
 ```
-Preview the production build locally.
 
-### Test
-```bash
-npm test
-```
-Runs the test suite in watch mode.
+## 📱 Usage
 
-```bash
-npm run test:run
-```
-Runs the test suite once.
+1. **Sign Up**: Create an account and choose your mode
+2. **Add Products**: Enter product details with expiry dates
+3. **Earn Points**: Get +5 points for adding, +10 for using before expiry
+4. **Level Up**: Reach 100 points to become a "Smart Saver"
+5. **Unlock Badges**: Complete challenges to earn achievements
+6. **Track Impact**: See your money saved and CO₂ reduced
 
-```bash
-npm run test:ui
-```
-Opens the Vitest UI for interactive testing.
-
-### Lint
-```bash
-npm run lint
-```
-Runs ESLint to check code quality.
-
-## 🛠️ Technologies Used
-
-### Frontend
-- **React 19** - UI library
-- **TypeScript** - Type safety
-- **Vite** - Build tool and dev server
-- **Tailwind CSS** - Utility-first CSS framework
-
-### Libraries
-- **date-fns** - Date manipulation and formatting
-- **uuid** - Unique ID generation
-
-### Testing
-- **Vitest** - Unit testing framework
-- **@testing-library/react** - React component testing
-- **fast-check** - Property-based testing
-- **happy-dom** - DOM implementation for testing
-
-## 📁 Project Structure
+## 🏗️ Project Structure
 
 ```
 expiry-guard/
-├── src/
-│   ├── components/          # React components
-│   │   ├── AddProductForm.tsx
-│   │   ├── Dashboard.tsx
-│   │   ├── EditProductForm.tsx
-│   │   ├── ErrorBoundary.tsx
-│   │   ├── FilterControls.tsx
-│   │   ├── HomePage.tsx
-│   │   ├── Navbar.tsx
-│   │   ├── ProductCard.tsx
-│   │   └── SearchBar.tsx
-│   ├── services/            # Business logic
-│   │   ├── expiryCalculation.ts
-│   │   ├── localStorage.ts
-│   │   ├── reminderService.ts
-│   │   └── validation.ts
-│   ├── types/               # TypeScript types
-│   │   └── index.ts
-│   ├── __tests__/           # Test files
-│   │   └── properties/      # Property-based tests
-│   ├── App.tsx              # Main app component
-│   ├── main.tsx             # Entry point
-│   └── index.css            # Global styles
-├── public/                  # Static assets
-├── .kiro/                   # Kiro spec files
+├── .kiro/                    # Spec-driven development docs
 │   └── specs/
-│       └── expiry-guard/
-│           ├── requirements.md
-│           ├── design.md
-│           └── tasks.md
-├── package.json
-├── vite.config.ts
-├── vitest.config.ts
-├── tailwind.config.js
-├── tsconfig.json
-└── README.md
+│       ├── expiry-guard/     # Base feature specs
+│       └── expiry-guard-gamified/  # Gamification specs
+├── src/
+│   ├── components/           # React components
+│   │   ├── AchievementsPage.tsx
+│   │   ├── Dashboard.tsx
+│   │   ├── LoginPage.tsx
+│   │   ├── SignupPage.tsx
+│   │   └── ...
+│   ├── services/            # Business logic
+│   │   ├── achievementService.ts
+│   │   ├── levelService.ts
+│   │   ├── pointsService.ts
+│   │   ├── userService.ts
+│   │   └── ...
+│   ├── types/               # TypeScript types
+│   │   ├── index.ts
+│   │   └── gamification.ts
+│   └── utils/               # Utilities
+│       └── animations.ts
+├── public/                  # Static assets
+└── package.json
 ```
 
-## 🎨 Usage Guide
+## 🎯 Gamification System
 
-### Adding a Product
-1. Click "Add Your First Product" or the floating + button
-2. Fill in the product details:
-   - Name (required)
-   - Category (required)
-   - Expiry Date (required)
-   - Quantity (optional)
-   - Notes (optional)
-   - Image URL (optional)
-3. Set reminder preferences (optional)
-4. Click "Add Product"
+### Points System
+| Action | Points |
+|--------|--------|
+| Add Product | +5 |
+| Mark as Used (before expiry) | +10 |
+| Use on Reminder Day | +20 |
+| 7-Day Streak | +50 |
+| Perfect Week | +100 |
 
-### Managing Products
-- **Search**: Use the search bar to find products by name
-- **Filter**: Filter by status (All, Safe, Expiring Soon, Expired) or category
-- **Edit**: Click the ✏️ button to modify product details
-- **Delete**: Click the 🗑️ button to remove a product
-- **Mark as Used**: Click "Mark as Used" to remove from inventory
+### Levels
+1. **Waste Rookie** (0-99 points) 🌱
+2. **Smart Saver** (100-499 points) 💡
+3. **Waste Warrior** (500-1499 points) ⚔️
+4. **Expiry Master** (1500-2999 points) 👑
+5. **Eco Legend** (3000+ points) 🏆
 
-### Understanding Status Colors
-- 🟢 **Green (Safe)**: More than 7 days until expiry
-- 🟠 **Orange (Expiring Soon)**: 1-7 days until expiry
-- 🔴 **Red (Expired)**: Product has expired
+### Achievements
+- 🥇 **First Save**: Save your first product
+- 🥗 **Food Saver**: Save 20 food items
+- 💊 **Medicine Protector**: Save 10 medicines
+- 🔥 **7 Day Streak**: No expiration for 7 days
+- 👑 **Perfect Week**: Use all items before expiring
 
-## 🌐 Deployment
+## 🛠️ Tech Stack
 
-### Deploy to Netlify
-1. Build the project:
-```bash
-npm run build
-```
+- **Frontend**: React 19.2 + TypeScript
+- **Build Tool**: Vite 7.2
+- **Styling**: Tailwind CSS 4.1
+- **Animations**: canvas-confetti, react-spring
+- **Audio**: Howler.js
+- **Testing**: Vitest, fast-check (PBT)
+- **Date Handling**: date-fns
+- **Storage**: LocalStorage (browser-based)
 
-2. Deploy the `dist` folder to Netlify:
-```bash
-netlify deploy --prod --dir=dist
-```
+## 📊 Statistics Tracking
 
-### Deploy to AWS S3
-1. Build the project:
-```bash
-npm run build
-```
+The app calculates:
+- **Products Saved**: Count of items used before expiry
+- **Money Saved**: Estimated value based on category
+- **CO₂ Saved**: Environmental impact in kg
+- **Current Streak**: Consecutive days without waste
 
-2. Upload the `dist` folder to your S3 bucket
-3. Enable static website hosting
-4. Configure CloudFront for CDN (optional)
+## 🎨 Design Philosophy
 
-## 👥 Who Is It For?
+Built using **Spec-Driven Development** methodology:
+1. **Requirements**: EARS-compliant acceptance criteria
+2. **Design**: Comprehensive architecture and correctness properties
+3. **Implementation**: Task-based incremental development
+4. **Testing**: Property-based testing for correctness
 
-- 🏠 **Households**: Track food and medicine expiry dates
-- 🏪 **Grocery Stores**: Manage inventory and reduce waste
-- 🍽️ **Restaurants & Cafes**: Monitor ingredient freshness
-- 💊 **Pharmacies**: Track medicine expiration
-- 🏢 **Small Businesses**: Organize product inventory
-- 🏨 **Hostels & PGs**: Manage shared supplies
+All specs are included in the `.kiro/specs/` directory.
 
 ## 🤝 Contributing
 
@@ -218,16 +183,17 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 This project is open source and available under the MIT License.
 
+## 👨‍💻 Author
+
+**Vikas Singh**
+- GitHub: [@vikassingh6264](https://github.com/vikassingh6264)
+
 ## 🙏 Acknowledgments
 
-- Built with ❤️ for reducing waste
-- Inspired by the need to prevent food and medicine waste
-- Thanks to all contributors and users
-
-## 📞 Support
-
-For issues, questions, or suggestions, please open an issue on GitHub.
+- Built with ❤️ using React and TypeScript
+- Gamification inspired by sustainability goals
+- UI/UX designed for maximum engagement
 
 ---
 
-**Made with ❤️ for a sustainable future**
+**Start your journey to zero waste today! 🌱**
