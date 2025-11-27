@@ -7,17 +7,23 @@ export default function HomePage({ onGetStarted }: HomePageProps) {
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       {/* Hero Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 text-center">
+        {/* Logo */}
+        <div className="flex justify-center mb-8">
+          <img src="/logo.svg" alt="ExpiryGuard Logo" className="w-32 h-32 drop-shadow-lg" />
+        </div>
+        
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
           Never Waste Food or Medicine Again
         </h1>
         <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-          Track expiry dates and get smart reminders before products expire.
+          Track expiry dates, earn rewards, and get smart reminders before products expire. 
+          Join the eco-friendly movement! 🌱
         </p>
         <button
           onClick={onGetStarted}
-          className="bg-blue-500 hover:bg-blue-600 text-white text-lg py-3 px-8 rounded-lg font-medium transition-colors shadow-lg hover:shadow-xl min-h-[44px]"
+          className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white text-lg py-3 px-8 rounded-lg font-medium transition-all shadow-lg hover:shadow-xl min-h-[44px] transform hover:scale-105"
         >
-          Add Your First Product
+          🚀 Get Started Free
         </button>
       </section>
 
@@ -105,18 +111,21 @@ export default function HomePage({ onGetStarted }: HomePageProps) {
       <footer className="bg-gray-800 text-white py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
-              <h3 className="text-xl font-bold">ExpiryGuard</h3>
-              <p className="text-gray-400 text-sm">Smart Expiry Date Reminder</p>
+            <div className="mb-4 md:mb-0 flex items-center gap-3">
+              <img src="/logo.svg" alt="ExpiryGuard" className="w-10 h-10" />
+              <div>
+                <h3 className="text-xl font-bold">ExpiryGuard</h3>
+                <p className="text-gray-400 text-sm">Smart Expiry Date Reminder</p>
+              </div>
             </div>
             <div className="flex gap-6 text-sm">
-              <a href="#about" className="hover:text-blue-400 transition-colors">About</a>
-              <a href="#contact" className="hover:text-blue-400 transition-colors">Contact</a>
-              <a href="#privacy" className="hover:text-blue-400 transition-colors">Privacy Policy</a>
+              <a href="#about" className="hover:text-green-400 transition-colors">About</a>
+              <a href="#contact" className="hover:text-green-400 transition-colors">Contact</a>
+              <a href="#privacy" className="hover:text-green-400 transition-colors">Privacy Policy</a>
             </div>
           </div>
           <div className="mt-6 text-center text-gray-400 text-sm">
-            <p>Made with ❤️ for reducing waste</p>
+            <p>Made with ❤️ for reducing waste and protecting our planet 🌍</p>
           </div>
         </div>
       </footer>

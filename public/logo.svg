@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- Shield background -->
+  <path d="M100 10 L170 40 L170 100 C170 140 140 170 100 190 C60 170 30 140 30 100 L30 40 Z" 
+        fill="#10b981" stroke="#059669" stroke-width="3"/>
+  
+  <!-- Inner shield highlight -->
+  <path d="M100 25 L155 50 L155 100 C155 132 132 155 100 170 C68 155 45 132 45 100 L45 50 Z" 
+        fill="#34d399" opacity="0.3"/>
+  
+  <!-- Calendar/Date icon -->
+  <rect x="70" y="70" width="60" height="70" rx="5" fill="white" stroke="#047857" stroke-width="2"/>
+  
+  <!-- Calendar header -->
+  <rect x="70" y="70" width="60" height="15" rx="5" fill="#047857"/>
+  
+  <!-- Calendar rings -->
+  <circle cx="85" cy="77.5" r="3" fill="white"/>
+  <circle cx="115" cy="77.5" r="3" fill="white"/>
+  
+  <!-- Calendar grid dots -->
+  <circle cx="82" cy="100" r="3" fill="#10b981"/>
+  <circle cx="100" cy="100" r="3" fill="#10b981"/>
+  <circle cx="118" cy="100" r="3" fill="#10b981"/>
+  
+  <circle cx="82" cy="115" r="3" fill="#10b981"/>
+  <circle cx="100" cy="115" r="3" fill="#10b981"/>
+  <circle cx="118" cy="115" r="3" fill="#10b981"/>
+  
+  <!-- Alert/Check mark -->
+  <circle cx="118" cy="130" r="8" fill="#ef4444"/>
+  <path d="M115 130 L117 132 L121 128" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
+</svg>

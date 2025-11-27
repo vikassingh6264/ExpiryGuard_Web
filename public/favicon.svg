@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Shield with gradient -->
+  <defs>
+    <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Main shield -->
+  <path d="M50 5 L85 20 L85 50 C85 70 70 85 50 95 C30 85 15 70 15 50 L15 20 Z" 
+        fill="url(#shieldGradient)" stroke="#047857" stroke-width="2"/>
+  
+  <!-- Calendar icon -->
+  <rect x="35" y="35" width="30" height="35" rx="3" fill="white" stroke="#047857" stroke-width="1.5"/>
+  <rect x="35" y="35" width="30" height="8" rx="3" fill="#047857"/>
+  
+  <!-- Calendar rings -->
+  <circle cx="42" cy="39" r="1.5" fill="white"/>
+  <circle cx="58" cy="39" r="1.5" fill="white"/>
+  
+  <!-- Grid -->
+  <circle cx="41" cy="50" r="2" fill="#10b981"/>
+  <circle cx="50" cy="50" r="2" fill="#10b981"/>
+  <circle cx="59" cy="50" r="2" fill="#10b981"/>
+  <circle cx="41" cy="58" r="2" fill="#10b981"/>
+  <circle cx="50" cy="58" r="2" fill="#10b981"/>
+  
+  <!-- Alert badge -->
+  <circle cx="59" cy="65" r="5" fill="#ef4444"/>
+  <text x="59" y="68" font-size="8" fill="white" text-anchor="middle" font-weight="bold">!</text>
+</svg>
