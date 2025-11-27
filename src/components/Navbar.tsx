@@ -55,28 +55,34 @@ export default function Navbar({ currentView, onNavigate, gamificationData, onVi
               onClick={() => onNavigate('home')}
               className={`px-4 py-2 rounded-md font-medium transition-colors min-h-[44px] ${
                 currentView === 'home'
-                  ? 'bg-blue-100 text-blue-700'
+                  ? 'bg-green-100 text-green-700'
                   : 'text-gray-700 hover:bg-gray-100'
               }`}
             >
               Home
             </button>
-            <button
-              onClick={() => onNavigate('dashboard')}
-              className={`px-4 py-2 rounded-md font-medium transition-colors min-h-[44px] ${
-                currentView === 'dashboard' || currentView === 'add' || currentView === 'edit'
-                  ? 'bg-blue-100 text-blue-700'
-                  : 'text-gray-700 hover:bg-gray-100'
-              }`}
-            >
-              Dashboard
-            </button>
-            {gamificationData && onViewAchievements && (
+            
+            {/* Show Dashboard only when logged in */}
+            {currentUser && (
+              <button
+                onClick={() => onNavigate('dashboard')}
+                className={`px-4 py-2 rounded-md font-medium transition-colors min-h-[44px] ${
+                  currentView === 'dashboard' || currentView === 'add' || currentView === 'edit'
+                    ? 'bg-green-100 text-green-700'
+                    : 'text-gray-700 hover:bg-gray-100'
+                }`}
+              >
+                Dashboard
+              </button>
+            )}
+            
+            {/* Show Achievements only when logged in */}
+            {currentUser && gamificationData && onViewAchievements && (
               <button
                 onClick={onViewAchievements}
                 className={`px-4 py-2 rounded-md font-medium transition-colors min-h-[44px] ${
                   currentView === 'achievements'
-                    ? 'bg-blue-100 text-blue-700'
+                    ? 'bg-green-100 text-green-700'
                     : 'text-gray-700 hover:bg-gray-100'
                 }`}
               >
@@ -187,25 +193,83 @@ export default function Navbar({ currentView, onNavigate, gamificationData, onVi
                 }}
                 className={`px-4 py-2 rounded-md font-medium transition-colors text-left min-h-[44px] ${
                   currentView === 'home'
-                    ? 'bg-blue-100 text-blue-700'
+                    ? 'bg-green-100 text-green-700'
                     : 'text-gray-700 hover:bg-gray-100'
                 }`}
               >
                 Home
               </button>
-              <button
-                onClick={() => {
-                  onNavigate('dashboard')
-                  setMobileMenuOpen(false)
-                }}
-                className={`px-4 py-2 rounded-md font-medium transition-colors text-left min-h-[44px] ${
-                  currentView === 'dashboard' || currentView === 'add' || currentView === 'edit'
-                    ? 'bg-blue-100 text-blue-700'
-                    : 'text-gray-700 hover:bg-gray-100'
-                }`}
-              >
-                Dashboard
-              </button>
+              
+              {/* Show Dashboard only when logged in */}
+              {currentUser && (
+                <button
+                  onClick={() => {
+                    onNavigate('dashboard')
+                    setMobileMenuOpen(false)
+                  }}
+                  className={`px-4 py-2 rounded-md font-medium transition-colors text-left min-h-[44px] ${
+                    currentView === 'dashboard' || currentView === 'add' || currentView === 'edit'
+                      ? 'bg-green-100 text-green-700'
+                      : 'text-gray-700 hover:bg-gray-100'
+                  }`}
+                >
+                  Dashboard
+                </button>
+              )}
+              
+              {/* Show Achievements only when logged in */}
+              {currentUser && gamificationData && onViewAchievements && (
+                <button
+                  onClick={() => {
+                    onViewAchievements()
+                    setMobileMenuOpen(false)
+                  }}
+                  className={`px-4 py-2 rounded-md font-medium transition-colors text-left min-h-[44px] ${
+                    currentView === 'achievements'
+                      ? 'bg-green-100 text-green-700'
+                      : 'text-gray-700 hover:bg-gray-100'
+                  }`}
+                >
+                  🏆 Achievements
+                </button>
+              )}
+              
+              {/* Show Login/Signup when not logged in */}
+              {!currentUser && (
+                <>
+                  <button
+                    onClick={() => {
+                      onLogin?.()
+                      setMobileMenuOpen(false)
+                    }}
+                    className="px-4 py-2 rounded-md font-medium transition-colors text-left min-h-[44px] text-gray-700 hover:bg-gray-100"
+                  >
+                    Login
+                  </button>
+                  <button
+                    onClick={() => {
+                      onSignup?.()
+                      setMobileMenuOpen(false)
+                    }}
+                    className="px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-md font-medium transition-colors text-left min-h-[44px]"
+                  >
+                    Sign Up
+                  </button>
+                </>
+              )}
+              
+              {/* Show Logout when logged in */}
+              {currentUser && onLogout && (
+                <button
+                  onClick={() => {
+                    onLogout()
+                    setMobileMenuOpen(false)
+                  }}
+                  className="px-4 py-2 rounded-md font-medium transition-colors text-left min-h-[44px] text-red-600 hover:bg-red-50"
+                >
+                  🚪 Logout
+                </button>
+              )}
             </div>
           </div>
         )}
