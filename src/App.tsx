@@ -13,7 +13,7 @@ import { playCoinSound, playLevelUpSound, playBadgeUnlockSound } from './service
 import Navbar from './components/Navbar'
 import HomePage from './components/HomePage'
 import Dashboard from './components/Dashboard'
-import AddProductForm from './components/AddProductForm'
+import BulkAddProductForm from './components/BulkAddProductForm'
 import EditProductForm from './components/EditProductForm'
 import AchievementsPage from './components/AchievementsPage'
 import NotificationToast from './components/NotificationToast'
@@ -31,7 +31,7 @@ interface Notification {
 
 function App() {
   const [products, setProducts] = useState<Product[]>([])
-  const [currentView, setCurrentView] = useState<View>('login')
+  const [currentView, setCurrentView] = useState<View>('home')
   const [editingProduct, setEditingProduct] = useState<Product | null>(null)
   const [gamificationData, setGamificationData] = useState<GamificationData | null>(null)
   const [notifications, setNotifications] = useState<Notification[]>([])
@@ -43,7 +43,6 @@ function App() {
     const user = getCurrentUser()
     if (user) {
       setCurrentUser(user)
-      setCurrentView('home')
       loadUserData(user.id)
     }
   }, [])
@@ -277,35 +276,8 @@ function App() {
     setCurrentUser(null)
     setGamificationData(null)
     setProducts([])
-    setCurrentView('login')
+    setCurrentView('home')
     setAuthError('')
-  }
-
-  // Show login/signup if not authenticated
-  if (!currentUser) {
-    if (currentView === 'signup') {
-      return (
-        <SignupPage
-          onSignup={handleSignup}
-          onSwitchToLogin={() => {
-            setCurrentView('login')
-            setAuthError('')
-          }}
-          error={authError}
-        />
-      )
-    }
-    
-    return (
-      <LoginPage
-        onLogin={handleLogin}
-        onSwitchToSignup={() => {
-          setCurrentView('signup')
-          setAuthError('')
-        }}
-        error={authError}
-      />
-    )
   }
 
   return (
@@ -317,8 +289,32 @@ function App() {
         onViewAchievements={() => setCurrentView('achievements')}
         currentUser={currentUser}
         onLogout={handleLogout}
+        onLogin={() => setCurrentView('login')}
+        onSignup={() => setCurrentView('signup')}
       />
       
+      {currentView === 'login' && (
+        <LoginPage
+          onLogin={handleLogin}
+          onSwitchToSignup={() => {
+            setCurrentView('signup')
+            setAuthError('')
+          }}
+          error={authError}
+        />
+      )}
+
+      {currentView === 'signup' && (
+        <SignupPage
+          onSignup={handleSignup}
+          onSwitchToLogin={() => {
+            setCurrentView('login')
+            setAuthError('')
+          }}
+          error={authError}
+        />
+      )}
+
       {currentView === 'home' && (
         <HomePage onGetStarted={() => setCurrentView('dashboard')} />
       )}
@@ -336,7 +332,7 @@ function App() {
 
       {currentView === 'add' && (
         <div className="py-8 px-4">
-          <AddProductForm
+          <BulkAddProductForm
             onSubmit={handleAddProduct}
             onCancel={() => setCurrentView('dashboard')}
           />

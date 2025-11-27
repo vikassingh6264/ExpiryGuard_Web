@@ -9,9 +9,11 @@ interface NavbarProps {
   onViewAchievements?: () => void
   currentUser?: User | null
   onLogout?: () => void
+  onLogin?: () => void
+  onSignup?: () => void
 }
 
-export default function Navbar({ currentView, onNavigate, gamificationData, onViewAchievements, currentUser, onLogout }: NavbarProps) {
+export default function Navbar({ currentView, onNavigate, gamificationData, onViewAchievements, currentUser, onLogout, onLogin, onSignup }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [showUserMenu, setShowUserMenu] = useState(false)
   const userMenuRef = useRef<HTMLDivElement>(null)
@@ -89,14 +91,14 @@ export default function Navbar({ currentView, onNavigate, gamificationData, onVi
               </div>
             )}
 
-            {/* User Menu */}
-            {currentUser && onLogout && (
+            {/* Auth Buttons or User Menu */}
+            {currentUser && onLogout ? (
               <div className="relative ml-4" ref={userMenuRef}>
                 <button
                   onClick={() => setShowUserMenu(!showUserMenu)}
                   className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors min-h-[44px]"
                 >
-                  <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold">
+                  <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center text-white font-bold">
                     {currentUser.username.charAt(0).toUpperCase()}
                   </div>
                   <span className="font-medium text-gray-700">{currentUser.username}</span>
@@ -122,6 +124,21 @@ export default function Navbar({ currentView, onNavigate, gamificationData, onVi
                     </button>
                   </div>
                 )}
+              </div>
+            ) : (
+              <div className="flex items-center gap-2 ml-4">
+                <button
+                  onClick={onLogin}
+                  className="px-4 py-2 text-gray-700 hover:text-green-600 font-medium transition-colors min-h-[44px]"
+                >
+                  Login
+                </button>
+                <button
+                  onClick={onSignup}
+                  className="px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white rounded-lg font-medium transition-all shadow-md hover:shadow-lg min-h-[44px]"
+                >
+                  Sign Up
+                </button>
               </div>
             )}
           </div>
