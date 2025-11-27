@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import type { Mode } from '../types/gamification'
-import { getAllModes } from '../services/modeService'
 
 interface SignupPageProps {
   onSignup: (username: string, email: string, password: string, mode: Mode) => void
@@ -12,20 +11,10 @@ export default function SignupPage({ onSignup, onSwitchToLogin, error }: SignupP
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
-  const [selectedMode, setSelectedMode] = useState<Mode>('home')
   const [passwordError, setPasswordError] = useState('')
-
-  const modes = getAllModes()
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    
-    // Validate passwords match
-    if (password !== confirmPassword) {
-      setPasswordError('Passwords do not match')
-      return
-    }
 
     if (password.length < 6) {
       setPasswordError('Password must be at least 6 characters')
@@ -33,7 +22,8 @@ export default function SignupPage({ onSignup, onSwitchToLogin, error }: SignupP
     }
 
     setPasswordError('')
-    onSignup(username, email, password, selectedMode)
+    // Default to 'home' mode for simplicity
+    onSignup(username, email, password, 'home')
   }
 
   return (
@@ -41,14 +31,14 @@ export default function SignupPage({ onSignup, onSwitchToLogin, error }: SignupP
       <div className="max-w-2xl w-full">
         {/* Logo/Header */}
         <div className="text-center mb-8">
-          <div className="text-6xl mb-4">🛡️</div>
+          <img src="/logo.svg" alt="ExpiryGuard" className="w-24 h-24 mx-auto mb-4 drop-shadow-lg" />
           <h1 className="text-4xl font-bold text-gray-900 mb-2">Join ExpiryGuard</h1>
-          <p className="text-gray-600">Start your journey to zero waste!</p>
+          <p className="text-gray-600 text-lg">Start tracking and reduce waste! 🌱</p>
         </div>
 
         {/* Signup Form */}
         <div className="bg-white rounded-2xl shadow-xl p-8 backdrop-blur-sm border border-gray-100">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Create Account</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Create Your Account</h2>
 
           {error && (
             <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
@@ -62,9 +52,9 @@ export default function SignupPage({ onSignup, onSwitchToLogin, error }: SignupP
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="username" className="block text-sm font-semibold text-gray-700 mb-2">
                 Username
               </label>
               <input
@@ -73,13 +63,14 @@ export default function SignupPage({ onSignup, onSwitchToLogin, error }: SignupP
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent min-h-[44px]"
+                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all min-h-[44px] text-lg"
                 placeholder="johndoe"
+                autoFocus
               />
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
                 Email
               </label>
               <input
@@ -88,13 +79,13 @@ export default function SignupPage({ onSignup, onSwitchToLogin, error }: SignupP
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent min-h-[44px]"
+                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all min-h-[44px] text-lg"
                 placeholder="your@email.com"
               />
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="password" className="block text-sm font-semibold text-gray-700 mb-2">
                 Password
               </label>
               <input
@@ -104,58 +95,17 @@ export default function SignupPage({ onSignup, onSwitchToLogin, error }: SignupP
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 minLength={6}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent min-h-[44px]"
+                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all min-h-[44px] text-lg"
                 placeholder="••••••••"
               />
-              <p className="text-xs text-gray-500 mt-1">At least 6 characters</p>
-            </div>
-
-            <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-1">
-                Confirm Password
-              </label>
-              <input
-                type="password"
-                id="confirmPassword"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                required
-                minLength={6}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent min-h-[44px]"
-                placeholder="••••••••"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Choose Your Mode
-              </label>
-              <div className="grid grid-cols-2 gap-3">
-                {modes.map((mode) => (
-                  <button
-                    key={mode.mode}
-                    type="button"
-                    onClick={() => setSelectedMode(mode.mode)}
-                    className={`p-4 rounded-lg border-2 transition-all text-left min-h-[44px] ${
-                      selectedMode === mode.mode
-                        ? 'border-purple-500 bg-purple-50'
-                        : 'border-gray-200 hover:border-gray-300'
-                    }`}
-                  >
-                    <div className="flex items-center gap-2">
-                      <span className="text-2xl">{mode.icon}</span>
-                      <span className="font-semibold text-gray-900">{mode.displayName.replace(' Mode', '')}</span>
-                    </div>
-                  </button>
-                ))}
-              </div>
+              <p className="text-xs text-gray-500 mt-2">Minimum 6 characters</p>
             </div>
 
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-purple-500 to-pink-600 text-white py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-pink-700 transition-all shadow-lg hover:shadow-xl min-h-[44px]"
+              className="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white py-4 rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-xl transform hover:scale-[1.02] min-h-[44px]"
             >
-              Create Account
+              🚀 Create Account
             </button>
           </form>
 
@@ -164,11 +114,15 @@ export default function SignupPage({ onSignup, onSwitchToLogin, error }: SignupP
               Already have an account?{' '}
               <button
                 onClick={onSwitchToLogin}
-                className="text-purple-600 hover:text-purple-700 font-semibold"
+                className="text-green-600 hover:text-green-700 font-semibold transition-colors"
               >
-                Login
+                Login here
               </button>
             </p>
+          </div>
+          
+          <div className="mt-4 text-center text-sm text-gray-500">
+            <p>By signing up, you agree to reduce food waste 🌍</p>
           </div>
         </div>
       </div>

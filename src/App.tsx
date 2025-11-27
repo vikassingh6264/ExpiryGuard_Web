@@ -251,7 +251,7 @@ function App() {
     if (user) {
       setCurrentUser(user)
       setAuthError('')
-      setCurrentView('home')
+      setCurrentView('dashboard')
       loadUserData(user.id)
     } else {
       setAuthError('Invalid email or password')
@@ -263,7 +263,7 @@ function App() {
     if (user) {
       setCurrentUser(user)
       setAuthError('')
-      setCurrentView('home')
+      setCurrentView('dashboard')
       loadUserData(user.id)
       showNotification('success', `Welcome ${username}! Your account has been created.`)
     } else {
