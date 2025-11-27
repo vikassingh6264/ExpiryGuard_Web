@@ -1,0 +1,45 @@
+# GitLab CI/CD configuration for deploying Vite React app to GitLab Pages
+
+image: node:18
+
+# Cache node_modules for faster builds
+cache:
+  paths:
+    - node_modules/
+
+# Define stages
+stages:
+  - build
+  - deploy
+
+# Build stage - compile the React app
+build:
+  stage: build
+  script:
+    - echo "Installing dependencies..."
+    - npm ci
+    - echo "Building the application..."
+    - npm run build
+    - echo "Build completed successfully!"
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 1 hour
+  only:
+    - main
+
+# Deploy stage - deploy to GitLab Pages
+pages:
+  stage: deploy
+  script:
+    - echo "Preparing deployment to GitLab Pages..."
+    - rm -rf public
+    - mv dist public
+    - echo "Deployment prepared!"
+  artifacts:
+    paths:
+      - public
+  only:
+    - main
+  dependencies:
+    - build
